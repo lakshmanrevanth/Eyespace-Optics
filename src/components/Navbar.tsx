@@ -1,21 +1,13 @@
 import React, { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  Search,
-  ShoppingBag,
-  Menu,
-  X,
-  Phone,
-  ChevronDown,
-  Plus,
-} from "lucide-react";
+import { Search, ShoppingBag, Menu, X, ChevronDown } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null); // Track open dropdown for desktop
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [activeMobileDropdown, setActiveMobileDropdown] = useState<
     string | null
-  >(null); // Track open dropdown for mobile
+  >(null);
   const productsDropdownRef = useRef(null);
   const servicesDropdownRef = useRef(null);
   const navigate = useNavigate();
@@ -27,246 +19,238 @@ export default function Navbar() {
   };
 
   const handleMouseEnter = (dropdown: string) => {
-    if (closeDropdownTimeout) clearTimeout(closeDropdownTimeout); // Clear any existing timeout
+    if (closeDropdownTimeout) clearTimeout(closeDropdownTimeout);
     setOpenDropdown(dropdown);
   };
 
   const handleMouseLeave = () => {
-    closeDropdownTimeout = setTimeout(() => {
-      setOpenDropdown(null); // Close dropdown after delay
-    }, 300); // Adjust delay as needed
+    closeDropdownTimeout = window.setTimeout(() => {
+      setOpenDropdown(null);
+    }, 300) as unknown as number;
   };
 
   const toggleMobileDropdown = (dropdown: string) => {
-    // If the clicked dropdown is already open, close it; otherwise, open it
     setActiveMobileDropdown((prevState) =>
       prevState === dropdown ? null : dropdown
     );
   };
 
+  const handleMenuItemClick = (path: string) => {
+    setIsOpen(false);
+    setActiveMobileDropdown(null);
+    navigate(path);
+  };
+
   return (
-    <nav className="fixed w-full bg-white/90 backdrop-blur-sm z-50 border-b border-gray-200">
+    <nav
+      style={{ boxShadow: "0 2px 4px 0 grey" }}
+      className="fixed w-full bg-[#F5F5F5]/90 backdrop-blur-sm z-50 border-b border-[#B8B2A2]  "
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
+          {/* Logo */}
           <div className="flex items-center">
             <Link
               to="/"
-              className="text-2xl font-bold text-gray-900 hover:text-[#9d8189] transition-colors"
+              className="flex items-center text-2xl font-bold text-[#7A6F5C] hover:text-[#5C5043] transition-colors"
             >
-              LOGO
+              <span>Eyespace Optics</span>
             </Link>
           </div>
 
+          {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            {/* Products with dropdown */}
+            {/* Products */}
             <div
               className="relative"
               ref={productsDropdownRef}
               onMouseEnter={() => handleMouseEnter("products")}
               onMouseLeave={handleMouseLeave}
             >
-              <button className="text-gray-700 hover:text-[#9d8189] flex items-center focus:outline-none transition-colors">
+              <button className="text-[#7A6F5C] hover:text-[#5C5043] flex items-center focus:outline-none transition-colors">
                 Products <ChevronDown className="w-4 h-4 ml-1" />
               </button>
               {openDropdown === "products" && (
-                <div className="absolute top-full mt-2 w-48 bg-white border border-[#9d8189] rounded-md shadow-lg z-10">
-                  <Link
-                    to="/products/framesandsunglasses"
-                    className="block px-4 py-2 text-gray-700 hover:bg-[#9d8189] hover:text-white transition-all"
-                  >
-                    Frames And Sunglasses
-                  </Link>
-                  <Link
-                    to="/products/opticallens"
-                    className="block px-4 py-2 text-gray-700 hover:bg-[#9d8189] hover:text-white transition-all"
-                  >
-                    Optical Lens
-                  </Link>
-                  <Link
-                    to="/products/ai-progressive-lens"
-                    className="block px-4 py-2 text-gray-700 hover:bg-[#9d8189] hover:text-white transition-all"
-                  >
-                    Ai Progressive Lens
-                  </Link>
-                  <Link
-                    to="/products/contactlens"
-                    className="block px-4 py-2 text-gray-700 hover:bg-[#9d8189] hover:text-white transition-all"
-                  >
-                    Special Contact Lens
-                  </Link>
-                  <Link
-                    to="/products/luxury-brands"
-                    className="block px-4 py-2 text-gray-700 hover:bg-[#9d8189] hover:text-white transition-all"
-                  >
-                    Luxury Brands
-                  </Link>
-                  <Link
-                    to="/products/clip-ons"
-                    className="block px-4 py-2 text-gray-700 hover:bg-[#9d8189] hover:text-white transition-all"
-                  >
-                    Clip Ons
-                  </Link>
-                  <Link
-                    to="/products/swimming-goggles"
-                    className="block px-4 py-2 text-gray-700 hover:bg-[#9d8189] hover:text-white transition-all"
-                  >
-                    Swimming Goggles
-                  </Link>
+                <div className="absolute top-full mt-2 w-48 bg-[#F5F5F5] border border-[#B8B2A2] rounded-md shadow-lg z-10">
+                  {[
+                    ["Frames And Sunglasses", "/products/framesandsunglasses"],
+                    ["Optical Lens", "/products/opticallens"],
+                    ["AI Progressive Lens", "/products/ai-progressive-lens"],
+                    ["Special Contact Lens", "/products/contactlens"],
+                    ["Luxury Brands", "/products/luxury-brands"],
+                    ["Swimming Goggles", "/products/swimming-goggles"],
+                  ].map(([label, path]) => (
+                    <button
+                      key={label}
+                      onClick={() => handleMenuItemClick(path)}
+                      className="block w-full text-left px-4 py-2 text-[#7A6F5C] hover:bg-[#5C5043] hover:text-[#FFFFFF] transition-all"
+                    >
+                      {label}
+                    </button>
+                  ))}
                 </div>
               )}
             </div>
 
-            {/* Services with dropdown */}
+            {/* Services */}
             <div
               className="relative"
               ref={servicesDropdownRef}
               onMouseEnter={() => handleMouseEnter("services")}
               onMouseLeave={handleMouseLeave}
             >
-              <Link
-                to="/services/services"
-                className="text-gray-700 hover:text-[#9d8189] flex items-center focus:outline-none transition-colors"
-              >
+              <button className="text-[#7A6F5C] hover:text-[#5C5043] flex items-center focus:outline-none transition-colors">
                 Services <ChevronDown className="w-4 h-4 ml-1" />
-              </Link>
+              </button>
               {openDropdown === "services" && (
-                <div className="absolute top-full mt-2 w-48 bg-white border border-[#9d8189] rounded-md shadow-lg z-10">
-                  <Link
-                    to="/services/myopia-management-service"
-                    className="block px-4 py-2 text-gray-700 hover:bg-[#9d8189] hover:text-white transition-all"
-                  >
-                    Myopia Management Service
-                  </Link>
-                  <Link
-                    to="/services/shop-in-store"
-                    className="block px-4 py-2 text-gray-700 hover:bg-[#9d8189] hover:text-white transition-all"
-                  >
-                    Shop In Store
-                  </Link>
-                  <Link
-                    to="/services/eye-wearing-&-testing-consultation"
-                    className="block px-4 py-2 text-gray-700 hover:bg-[#9d8189] hover:text-white transition-all"
-                  >
-                    Eye Testing & EyeWear Consultation
-                  </Link>
-                  <Link
-                    to="/services/contact-lenses-fittings"
-                    className="block px-4 py-2 text-gray-700 hover:bg-[#9d8189] hover:text-white transition-all"
-                  >
-                    Contact Lenses Fittings
-                  </Link>
+                <div className="absolute top-full mt-2 w-48 bg-[#F5F5F5] border border-[#B8B2A2] rounded-md shadow-lg z-10">
+                  {[
+                    [
+                      "Myopia Management",
+                      "/services/myopia-management-service",
+                    ],
+                    ["Shop In Store", "/services/shop-in-store"],
+                    [
+                      "Eye Testing & Consultation",
+                      "/services/eye-wearing-&-testing-consultation",
+                    ],
+                    [
+                      "Contact Lens Fitting",
+                      "/services/contact-lenses-fittings",
+                    ],
+                  ].map(([label, path]) => (
+                    <button
+                      key={label}
+                      onClick={() => handleMenuItemClick(path)}
+                      className="block w-full text-left px-4 py-2 text-[#7A6F5C] hover:bg-[#5C5043] hover:text-[#FFFFFF] transition-all"
+                    >
+                      {label}
+                    </button>
+                  ))}
                 </div>
               )}
             </div>
 
             <Link
               to="/services/shop-in-store"
-              className="text-gray-700 hover:text-[#9d8189] transition-colors"
+              className="text-[#7A6F5C] hover:text-[#5C5043] transition-colors"
             >
               Contact
             </Link>
             <Link
-              to="/blog/blog-page"
-              className="text-gray-700 hover:text-[#9d8189] transition-colors"
+              to="/blog/blog-pages"
+              className="text-[#7A6F5C] hover:text-[#5C5043] transition-colors"
             >
               Blogs
             </Link>
           </div>
 
+          {/* Call-to-Action Button */}
           <div className="hidden md:flex items-center space-x-4">
             <button
               onClick={handleBookAppointment}
-              className="bg-[#9d8189] text-white px-4 py-2 rounded-md hover:bg-[#9d8189]/80 transition-colors"
+              className="bg-[#7A6F5C] text-[#FFFFFF] px-6 py-3 rounded-md hover:bg-[#5C5043] transition-colors"
             >
               Book Appointment
             </button>
           </div>
 
+          {/* Mobile Menu Toggle */}
           <div className="md:hidden flex items-center">
             <button onClick={() => setIsOpen(!isOpen)} className="p-2">
               {isOpen ? (
-                <X className="w-6 h-6 text-gray-700 hover:text-[#9d8189]" />
+                <X className="w-6 h-6 text-[#7A6F5C] hover:text-[#5C5043]" />
               ) : (
-                <Menu className="w-6 h-6 text-gray-700 hover:text-[#9d8189]" />
+                <Menu className="w-6 h-6 text-[#7A6F5C] hover:text-[#5C5043]" />
               )}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden">
+        <div className="md:hidden bg-[#F5F5F5]">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <div className="relative">
-              <button
-                onClick={() => toggleMobileDropdown("products")}
-                className="flex items-center justify-between w-full px-3 py-2 text-gray-700 hover:bg-[#9d8189] hover:text-white transition-all"
-              >
-                Products
-                <Plus className="w-5 h-5" />
-              </button>
-              {activeMobileDropdown === "products" && (
-                <div className="mt-2 w-full bg-white border border-[#9d8189] rounded-md shadow-lg z-10">
-                  <Link
-                    to="/products/framesandsunglasses"
-                    className="block px-4 py-2 text-gray-700 hover:bg-[#9d8189] hover:text-white transition-all"
-                  >
-                    Frames And Sunglasses
-                  </Link>
-                  <Link
-                    to="/products/opticallens"
-                    className="block px-4 py-2 text-gray-700 hover:bg-[#9d8189] hover:text-white transition-all"
-                  >
-                    Optical Lens
-                  </Link>
-                  <Link
-                    to="/products/ai-progressive-lens"
-                    className="block px-4 py-2 text-gray-700 hover:bg-[#9d8189] hover:text-white transition-all"
-                  >
-                    Ai Progressive Lens
-                  </Link>
-                  <Link
-                    to="/products/contactlens"
-                    className="block px-4 py-2 text-gray-700 hover:bg-[#9d8189] hover:text-white transition-all"
-                  >
-                    Special Contact Lens
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            <div className="relative">
-              <button
-                onClick={() => toggleMobileDropdown("services")}
-                className="flex items-center justify-between w-full px-3 py-2 text-gray-700 hover:bg-[#9d8189] hover:text-white transition-all"
-              >
-                Services
-                <Plus className="w-5 h-5" />
-              </button>
-              {activeMobileDropdown === "services" && (
-                <div className="mt-2 w-full bg-white border border-[#9d8189] rounded-md shadow-lg z-10">
-                  <Link
-                    to="/services/myopia-management-service"
-                    className="block px-4 py-2 text-gray-700 hover:bg-[#9d8189] hover:text-white transition-all"
-                  >
-                    Myopia Management Service
-                  </Link>
-                  <Link
-                    to="/services/shop-in-store"
-                    className="block px-4 py-2 text-gray-700 hover:bg-[#9d8189] hover:text-white transition-all"
-                  >
-                    Shop In Store
-                  </Link>
-                  <Link
-                    to="/services/service3"
-                    className="block px-4 py-2 text-gray-700 hover:bg-[#9d8189] hover:text-white transition-all"
-                  >
-                    Service 3
-                  </Link>
-                </div>
-              )}
-            </div>
+            {/* Products and Services Dropdown */}
+            {[
+              ["Products", "products"],
+              ["Services", "services"],
+            ].map(([label, dropdown]) => (
+              <div key={label} className="relative">
+                <button
+                  onClick={() => toggleMobileDropdown(dropdown)}
+                  className="flex items-center justify-between w-full px-3 py-2 text-[#A59D84] hover:bg-[#C1BAA1] hover:text-[#ECEBDE] transition-all"
+                >
+                  {label}
+                  <ChevronDown className="w-5 h-5" />
+                </button>
+                {activeMobileDropdown === dropdown && (
+                  <div className="mt-2 w-full bg-[#ECEBDE] border border-[#A59D84] rounded-md shadow-lg z-10">
+                    {(dropdown === "products"
+                      ? [
+                          [
+                            "Frames And Sunglasses",
+                            "/products/framesandsunglasses",
+                          ],
+                          ["Optical Lens", "/products/opticallens"],
+                          [
+                            "AI Progressive Lens",
+                            "/products/ai-progressive-lens",
+                          ],
+                          ["Special Contact Lens", "/products/contactlens"],
+                          ["Luxury Brands", "/products/luxury-brands"],
+                          ["Swimming Goggles", "/products/swimming-goggles"],
+                        ]
+                      : [
+                          [
+                            "Myopia Management",
+                            "/services/myopia-management-service",
+                          ],
+                          ["Shop In Store", "/services/shop-in-store"],
+                          [
+                            "Eye Testing & Consultation",
+                            "/services/eye-wearing-&-testing-consultation",
+                          ],
+                          [
+                            "Contact Lens Fitting",
+                            "/services/contact-lenses-fittings",
+                          ],
+                        ]
+                    ).map(([linkLabel, path]) => (
+                      <button
+                        key={linkLabel}
+                        onClick={() => handleMenuItemClick(path)}
+                        className="block w-full text-left px-4 py-2 text-[#A59D84] hover:bg-[#C1BAA1] hover:text-[#ECEBDE] transition-all"
+                      >
+                        {linkLabel}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+            {/* Contact Button */}
+            <button
+              onClick={() => handleMenuItemClick("/services/shop-in-store")}
+              className="w-full text-left px-4 py-2 text-[#A59D84] hover:bg-[#C1BAA1] hover:text-[#ECEBDE] transition-all"
+            >
+              Contact
+            </button>
+            {/* Blogs Button */}
+            <button
+              onClick={() => handleMenuItemClick("/blog/blog-page")}
+              className="w-full text-left px-4 py-2 text-[#A59D84] hover:bg-[#C1BAA1] hover:text-[#ECEBDE] transition-all"
+            >
+              Blogs
+            </button>
+            {/* Book Appointment Button */}
+            <button
+              onClick={handleBookAppointment}
+              className="w-full text-left px-4 py-2 text-[#ECEBDE] bg-[#A59D84] rounded-md hover:bg-[#C1BAA1] transition-all"
+            >
+              Book Appointment
+            </button>
           </div>
         </div>
       )}

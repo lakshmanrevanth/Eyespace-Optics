@@ -1,93 +1,83 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 interface Service {
-  title: string
-  description: string
-  image: string
-  link: string
+  title: string;
+  description: string;
+  image: string;
+  link: string;
 }
 
 export default function ServicesSectionSpecialties() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
-
   const services: Service[] = [
     {
       title: "Our Offers And Promotions",
       description: "Discover exclusive deals on premium eyewear.",
-      image: "/assets/images/main/offers.webp",  // Add your image source here
-      link: "#offers"
+      image: "/assets/images/main/brands_.jpg",
+      link: "/services/offers-and-promotions",
     },
     {
       title: "The Brands That We House",
       description: "Explore our curated collection of designer frames.",
-      image: "",  // Add your image source here
-      link: "#brands"
+      image: "/assets/images/main/brands__.jpg",
+      link: "/products/luxury-brands",
     },
     {
       title: "Our Myopia Management Centre",
       description: "Expert care for myopia control and prevention.",
-      image: "",  // Add your image source here
-      link: "#myopia"
-    }
-  ]
+      image: "/assets/images/main/myopia.jpg",
+      link: "/services/myopia-management-service",
+    },
+  ];
 
   return (
     <section className="container mx-auto px-4 py-16 md:py-24">
-      
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <h2 className="text-3xl font-bold text-gray-800 text-center mb-12">
+        Our Specialties
+      </h2>
+      <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {services.map((service, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="group overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
           >
-            <div 
-              className="overflow-hidden transition-all duration-300 hover:shadow-xl"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              <div className="p-0">
-                <div className="relative aspect-[4/3] overflow-hidden group">
-                  {/* Replaced next/image with img */}
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="object-cover transition-transform duration-300 group-hover:scale-110 w-full h-full"
-                    style={{ objectFit: 'cover' }}
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 opacity-0 group-hover:opacity-100" />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {/* Replaced next/link with a regular <a> tag */}
-                    <a href={service.link} className="bg-white text-gray-800 hover:bg-gray-100 px-4 py-2 rounded-md">
-                      Learn More
-                    </a>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h2 className="text-xl font-semibold mb-2 text-gray-800">{service.title}</h2>
-                  <p className="text-gray-600">{service.description}</p>
-                </div>
-              </div>
-              <div className="bg-gray-50 p-6">
-                <button
-                  className={`w-full transition-colors duration-300 ${
-                    hoveredIndex === index ? 'bg-[#9d8189] text-white' : 'bg-transparent text-[#9d8189]'
-                  } px-4 py-2 rounded-md`}
+            <div className="relative">
+              <img
+                src={service.image}
+                alt={service.title}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 rounded-t-lg"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-4 left-4 right-4 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <a
+                  href={service.link}
+                  className="bg-white text-[#7A6F5C] hover:bg-gray-100 px-4 py-2 rounded-md text-sm font-medium"
                 >
-                  {/* Replaced next/link with a regular <a> tag */}
-                  <a href={service.link}>
-                    {hoveredIndex === index ? 'Explore Now' : 'Know More'}
-                  </a>
-                </button>
+                  Learn More
+                </a>
               </div>
+            </div>
+            <div className="p-6 bg-gray-50">
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                {service.title}
+              </h3>
+              <p className="text-gray-600">{service.description}</p>
+            </div>
+            <div className="bg-gray-100 p-4">
+              <a
+                href={service.link}
+                className="block w-full text-center px-4 py-2 text-[#7A6F5C] bg-transparent border border-[#7A6F5C] rounded-md hover:bg-[#7A6F5C] hover:text-white transition-colors duration-300"
+              >
+                Explore Now
+              </a>
             </div>
           </motion.div>
         ))}
       </div>
     </section>
-  )
+  );
 }

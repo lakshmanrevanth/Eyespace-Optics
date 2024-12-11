@@ -1,29 +1,36 @@
-import React, { useState } from 'react';
-import PersonalDetails from './steps/PersonalDetails';
-import ServiceSelection from './steps/ServiceSelection';
-import DateTimeSelection from './steps/DateTimeSelection';
-import AdditionalInfo from './steps/AdditionalInfo';
-import BookingSummary from './steps/BookingSummary';
-import StepIndicator from './StepIndicator';
-import { BookingData } from './types';
+import React, { useState } from "react";
+import PersonalDetails from "./steps/PersonalDetails";
+import ServiceSelection from "./steps/ServiceSelection";
+import DateTimeSelection from "./steps/DateTimeSelection";
+import AdditionalInfo from "./steps/AdditionalInfo";
+import BookingSummary from "./steps/BookingSummary";
+import StepIndicator from "./StepIndicator";
+import { BookingData } from "./types";
 
-const STEPS = ['Personal Details', 'Select Service', 'Date & Time', 'Additional Info', 'Review'];
+const STEPS = [
+  "Personal Details",
+  "Select Service",
+  "Date & Time",
+  "Additional Info",
+  "Review",
+];
 
 export default function BookingForm() {
   const [currentStep, setCurrentStep] = useState(0);
   const [bookingData, setBookingData] = useState<BookingData>({
-    personalDetails: { firstName: '', lastName: '', email: '', phone: '' },
+    personalDetails: { firstName: "", lastName: "", email: "", phone: "" },
     service: null,
     dateTime: null,
-    message: '',
+    message: "",
   });
 
   const updateBookingData = (data: Partial<BookingData>) => {
-    setBookingData(prev => ({ ...prev, ...data }));
+    setBookingData((prev) => ({ ...prev, ...data }));
   };
 
-  const nextStep = () => setCurrentStep(prev => Math.min(prev + 1, STEPS.length - 1));
-  const prevStep = () => setCurrentStep(prev => Math.max(prev - 1, 0));
+  const nextStep = () =>
+    setCurrentStep((prev) => Math.min(prev + 1, STEPS.length - 1));
+  const prevStep = () => setCurrentStep((prev) => Math.max(prev - 1, 0));
 
   const renderStep = () => {
     switch (currentStep) {
@@ -31,7 +38,7 @@ export default function BookingForm() {
         return (
           <PersonalDetails
             data={bookingData.personalDetails}
-            onUpdate={data => updateBookingData({ personalDetails: data })}
+            onUpdate={(data) => updateBookingData({ personalDetails: data })}
             onNext={nextStep}
           />
         );
@@ -39,7 +46,7 @@ export default function BookingForm() {
         return (
           <ServiceSelection
             selected={bookingData.service}
-            onUpdate={service => updateBookingData({ service })}
+            onUpdate={(service) => updateBookingData({ service })}
             onNext={nextStep}
             onBack={prevStep}
           />
@@ -48,7 +55,7 @@ export default function BookingForm() {
         return (
           <DateTimeSelection
             selected={bookingData.dateTime}
-            onUpdate={dateTime => updateBookingData({ dateTime })}
+            onUpdate={(dateTime) => updateBookingData({ dateTime })}
             onNext={nextStep}
             onBack={prevStep}
           />
@@ -57,7 +64,7 @@ export default function BookingForm() {
         return (
           <AdditionalInfo
             message={bookingData.message}
-            onUpdate={message => updateBookingData({ message })}
+            onUpdate={(message) => updateBookingData({ message })}
             onNext={nextStep}
             onBack={prevStep}
           />
@@ -66,8 +73,9 @@ export default function BookingForm() {
         return (
           <BookingSummary
             data={bookingData}
-            onConfirm={() => console.log('Booking confirmed:', bookingData)}
+            onConfirm={() => console.log("Booking confirmed:", bookingData)}
             onBack={prevStep}
+            onNext={nextStep}
           />
         );
       default:

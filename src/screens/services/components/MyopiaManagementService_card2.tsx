@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface TipProps {
   icon: React.ReactNode;
@@ -14,7 +14,7 @@ const Tip: React.FC<TipProps> = ({ icon, title, highlight, description }) => (
     </div>
     <div className="flex-1">
       <h3 className="text-sm font-semibold text-gray-900 uppercase">{title}</h3>
-      <p className="mt-1 text-lg font-bold text-[#9d8189]">{highlight}</p>
+      <p className="mt-1 text-lg font-bold text-[#7A6F5C]">{highlight}</p>
       <p className="mt-1 text-sm text-gray-600">{description}</p>
     </div>
   </div>
@@ -27,7 +27,7 @@ const MyopiaManagementTips = () => {
         <h1 className="text-2xl md:text-3xl font-bold text-gray-900 text-center md:text-left">
           Good Behaviour Tips for Myopia Management
         </h1>
-        <div className="text-[#9d8189] font-bold text-lg">ZEISS</div>
+        <div className="text-[#7A6F5C] font-bold text-lg">ZEISS</div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

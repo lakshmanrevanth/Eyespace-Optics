@@ -1,11 +1,11 @@
-import { Star } from 'lucide-react';
+import { Star } from "lucide-react";
 
 export default function MyopiaManagementService_card3() {
   const treatments = [
-    'Myopia control spectacle lenses (lens for myopia)',
-    'Contact lenses (lens for correction of myopia)',
-    'Eye drops to control Myopia',
-    'Combination therapies',
+    "Myopia control spectacle lenses (lens for myopia)",
+    "Contact lenses (lens for correction of myopia)",
+    "Eye drops to control Myopia",
+    "Combination therapies",
   ];
 
   return (
@@ -23,21 +23,25 @@ export default function MyopiaManagementService_card3() {
           </h2>
           <div className="space-y-4 text-[#B3A69B]">
             <p className="leading-relaxed">
-              Several strategies can help manage myopia in children and slow down its progression,
-              while providing clearer vision at the same time. Myopia management is effective and
-              applies only to children between the ages of 6 years and 16 years.
+              Several strategies can help manage myopia in children and slow
+              down its progression, while providing clearer vision at the same
+              time. Myopia management is effective and applies only to children
+              between the ages of 6 years and 16 years.
             </p>
             <p className="leading-relaxed">
-              Your optometrists can recommend the treatment options they think best suit your
-              child's needs during an eye examination. Myopia can affect your child's vision and
-              eye health more than you think, besides needing heavier prescriptions in adulthood.
-              However, early action can help slow the progression of myopia and protect your child's vision.
+              Your optometrists can recommend the treatment options they think
+              best suit your child's needs during an eye examination. Myopia can
+              affect your child's vision and eye health more than you think,
+              besides needing heavier prescriptions in adulthood. However, early
+              action can help slow the progression of myopia and protect your
+              child's vision.
             </p>
             <div className="space-y-2">
               <p className="leading-relaxed">
-                There are several options for Myopia Management, which are provided by understanding
-                the causes and recognising the symptoms. Our Optometrists will provide one of the
-                following, post an eye examination and consultation:
+                There are several options for Myopia Management, which are
+                provided by understanding the causes and recognising the
+                symptoms. Our Optometrists will provide one of the following,
+                post an eye examination and consultation:
               </p>
               <ul className="list-disc list-inside space-y-1 ml-4">
                 {treatments.map((treatment, index) => (
@@ -57,25 +61,32 @@ export default function MyopiaManagementService_card3() {
           </h2>
           <div className="space-y-4 text-[#B3A69B]">
             <p className="leading-relaxed">
-              We at S.R.Gopal Rao Opticians & Optometrists have launched India's first retail
-              housed clinical Myopia Management Centres supported by Zeiss. The centre aims to
-              provide vision care and support to children from a young age while still retaining
-              the comforts of a retail setup like ours. The key to this practice is that one can{' '}
-              <a href="#" className="text-[#B3A69B] underline hover:text-[#9D8189]">
+              We at S.R.Gopal Rao Opticians & Optometrists have launched India's
+              first retail housed clinical Myopia Management Centres supported
+              by Zeiss. The centre aims to provide vision care and support to
+              children from a young age while still retaining the comforts of a
+              retail setup like ours. The key to this practice is that one can{" "}
+              <a
+                href="#"
+                className="text-[#B3A69B] underline hover:text-[#7A6F5C]"
+              >
                 make an appointment
-              </a>{' '}
-              to visit the store and be assured of getting their needs and their child's needs
-              attended to at the same time without the daunting task of long hours and waits.
+              </a>{" "}
+              to visit the store and be assured of getting their needs and their
+              child's needs attended to at the same time without the daunting
+              task of long hours and waits.
             </p>
             <p className="leading-relaxed">
-              Moreover, we are fully equipped with state-of-the-art technology to complete a thorough
-              eye examination for adults while also being able to detect if children have myopia
-              at an early age, followed by counselling, providing solutions, and treatment for the same.
+              Moreover, we are fully equipped with state-of-the-art technology
+              to complete a thorough eye examination for adults while also being
+              able to detect if children have myopia at an early age, followed
+              by counselling, providing solutions, and treatment for the same.
             </p>
             <p className="leading-relaxed">
-              It is important to know that not all children can get myopia, but regular eye check-ups
-              (from 6 months to a year), from an early age is important for every child to detect and
-              control the progression of myopia if needed.
+              It is important to know that not all children can get myopia, but
+              regular eye check-ups (from 6 months to a year), from an early age
+              is important for every child to detect and control the progression
+              of myopia if needed.
             </p>
           </div>
         </div>
@@ -83,12 +94,18 @@ export default function MyopiaManagementService_card3() {
         {/* Bottom Section */}
         <div className="md:col-span-2 text-center text-[#B3A69B]">
           <p>
-            If your child has myopia symptoms{' '}
-            <a href="#" className="text-[#B3A69B] underline hover:text-[#9D8189]">
+            If your child has myopia symptoms{" "}
+            <a
+              href="#"
+              className="text-[#B3A69B] underline hover:text-[#7A6F5C]"
+            >
               Contact Us
-            </a>{' '}
-            or{' '}
-            <a href="#" className="text-[#B3A69B] underline hover:text-[#9D8189]">
+            </a>{" "}
+            or{" "}
+            <a
+              href="#"
+              className="text-[#B3A69B] underline hover:text-[#7A6F5C]"
+            >
               Book An Appointment
             </a>
             .

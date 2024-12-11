@@ -1,3 +1,5 @@
+import React from "react";
+
 type ContactLensProduct = {
   manufacturer: string;
   products: {
@@ -57,22 +59,22 @@ export default function ContactLensAdditionalBrandsMobilityComponent() {
       <div className="min-w-[800px]">
         {/* Header */}
         <div className="grid grid-cols-6 gap-2 mb-4">
-          <div className="bg-[#9d8189] text-white p-4 rounded shadow">
+          <div className="text-[#7A6F5C] p-4 rounded-lg shadow-lg border-2 border-[#7A6F5C]">
             Types/Materials
           </div>
-          <div className="bg-[#9d8189] text-white p-4 rounded shadow">
+          <div className="text-[#7A6F5C] p-4 rounded-lg shadow-lg border-2 border-[#7A6F5C]">
             Daily Disposable
           </div>
-          <div className="bg-[#9d8189] text-white p-4 rounded shadow">
+          <div className="text-[#7A6F5C] p-4 rounded-lg shadow-lg border-2 border-[#7A6F5C]">
             Fortnightly
           </div>
-          <div className="bg-[#9d8189] text-white p-4 rounded shadow">
+          <div className="text-[#7A6F5C] p-4 rounded-lg shadow-lg border-2 border-[#7A6F5C]">
             Monthly
           </div>
-          <div className="bg-[#9d8189] text-white p-4 rounded shadow">
+          <div className="text-[#7A6F5C] p-4 rounded-lg shadow-lg border-2 border-[#7A6F5C]">
             Quarterly
           </div>
-          <div className="bg-[#9d8189] text-white p-4 rounded shadow">
+          <div className="text-[#7A6F5C] p-4 rounded-lg shadow-lg border-2 border-[#7A6F5C]">
             Yearly
           </div>
         </div>
@@ -82,42 +84,42 @@ export default function ContactLensAdditionalBrandsMobilityComponent() {
           {contactLensData.map((manufacturer, index) => (
             <div
               key={index}
-              className="grid grid-cols-6 gap-2 py-4 border-b border-gray-200"
+              className="grid grid-cols-6 gap-2 py-4 border-b-2 border-[#7A6F5C]"
             >
-              <div className="text-[#9d8189] font-medium">
+              <div className="text-[#7A6F5C] font-medium border-r-2 border-[#7A6F5C] p-4">
                 {manufacturer.manufacturer}
               </div>
-              <div className="space-y-2">
+              <div className="space-y-2 p-4">
                 {manufacturer.products.daily?.map((product, idx) => (
-                  <div key={idx} className="text-[#9d8189] text-sm">
+                  <div key={idx} className="text-[#7A6F5C] text-sm">
                     ✶ {product}
                   </div>
                 ))}
               </div>
-              <div className="space-y-2">
+              <div className="space-y-2 p-4">
                 {manufacturer.products.fortnightly?.map((product, idx) => (
-                  <div key={idx} className="text-[#9d8189] text-sm">
+                  <div key={idx} className="text-[#7A6F5C] text-sm">
                     ✶ {product}
                   </div>
                 ))}
               </div>
-              <div className="space-y-2">
+              <div className="space-y-2 p-4">
                 {manufacturer.products.monthly?.map((product, idx) => (
-                  <div key={idx} className="text-[#9d8189] text-sm">
+                  <div key={idx} className="text-[#7A6F5C] text-sm">
                     ✶ {product}
                   </div>
                 ))}
               </div>
-              <div className="space-y-2">
+              <div className="space-y-2 p-4">
                 {manufacturer.products.quarterly?.map((product, idx) => (
-                  <div key={idx} className="text-[#9d8189] text-sm">
+                  <div key={idx} className="text-[#7A6F5C] text-sm">
                     ✶ {product}
                   </div>
                 ))}
               </div>
-              <div className="space-y-2">
+              <div className="space-y-2 p-4">
                 {manufacturer.products.yearly?.map((product, idx) => (
-                  <div key={idx} className="text-[#9d8189] text-sm">
+                  <div key={idx} className="text-[#7A6F5C] text-sm">
                     ✶ {product}
                   </div>
                 ))}

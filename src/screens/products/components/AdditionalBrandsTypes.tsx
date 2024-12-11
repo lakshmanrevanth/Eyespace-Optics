@@ -107,26 +107,41 @@ const lensTypes: LensType[] = [
     bifocal: ["Bifocal K", "Bifocal D", "Transitions", "Sunlite & Fotolens"],
   },
 ];
+
 export default function AdditionalBrandsTypeComponent() {
   return (
     <div className="w-full max-w-7xl mx-auto p-4">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {/* Header Row */}
-        <div className="bg-[#9D8189] text-white p-4 font-medium text-center">Types</div>
-        <div className="bg-[#9D8189] text-white p-4 font-medium text-center">Single Vision</div>
-        <div className="bg-[#9D8189] text-white p-4 font-medium text-center">Progressive</div>
-        <div className="bg-[#9D8189] text-white p-4 font-medium text-center">Bifocal</div>
+        <div className="bg-[#C3B29E] text-white p-4 font-medium text-center">
+          Types
+        </div>
+        <div className="bg-[#C3B29E] text-white p-4 font-medium text-center">
+          Single Vision
+        </div>
+        <div className="bg-[#C3B29E] text-white p-4 font-medium text-center">
+          Progressive
+        </div>
+        <div className="bg-[#C3B29E] text-white p-4 font-medium text-center">
+          Bifocal
+        </div>
 
         {/* Data Rows */}
         {lensTypes.map((lens, index) => (
           <>
-            <div key={`name-${index}`} className="text-[#9D8189] font-medium p-4 border-b">
+            <div
+              key={`name-${index}`}
+              className="text-[#7A6F5C] font-medium p-4 border-b"
+            >
               {lens.name}
             </div>
             <div key={`single-${index}`} className="p-4 border-b">
               <ul className="space-y-2">
                 {lens.singleVision.map((item, i) => (
-                  <li key={i} className="flex items-center gap-2 text-[#9D8189]">
+                  <li
+                    key={i}
+                    className="flex items-center gap-2 text-[#7A6F5C]"
+                  >
                     <span className="text-xs">★</span>
                     {item}
                   </li>
@@ -136,7 +151,10 @@ export default function AdditionalBrandsTypeComponent() {
             <div key={`progressive-${index}`} className="p-4 border-b">
               <ul className="space-y-2">
                 {lens.progressive.map((item, i) => (
-                  <li key={i} className="flex items-center gap-2 text-[#9D8189]">
+                  <li
+                    key={i}
+                    className="flex items-center gap-2 text-[#7A6F5C]"
+                  >
                     <span className="text-xs">★</span>
                     {item}
                   </li>
@@ -146,7 +164,10 @@ export default function AdditionalBrandsTypeComponent() {
             <div key={`bifocal-${index}`} className="p-4 border-b">
               <ul className="space-y-2">
                 {lens.bifocal.map((item, i) => (
-                  <li key={i} className="flex items-center gap-2 text-[#9D8189]">
+                  <li
+                    key={i}
+                    className="flex items-center gap-2 text-[#7A6F5C]"
+                  >
                     <span className="text-xs">★</span>
                     {item}
                   </li>
