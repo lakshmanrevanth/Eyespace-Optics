@@ -52,14 +52,6 @@ export default function ServicesSectionSpecialties() {
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 rounded-t-lg"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="absolute bottom-4 left-4 right-4 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <a
-                  href={service.link}
-                  className="bg-white text-[#7A6F5C] hover:bg-gray-100 px-4 py-2 rounded-md text-sm font-medium"
-                >
-                  Learn More
-                </a>
-              </div>
             </div>
             <div className="p-6 bg-gray-50">
               <h3 className="text-xl font-semibold text-gray-800 mb-2">

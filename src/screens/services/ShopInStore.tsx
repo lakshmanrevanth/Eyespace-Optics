@@ -147,17 +147,12 @@ const HeroSection: React.FC<{ onScrollToInfo: () => void }> = ({
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
             >
-              <button
-                onClick={onScrollToInfo}
-                className="group relative px-8 py-4 bg-white text-blue-900 rounded-full font-semibold overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]"
+              <a
+                href="/schedule"
+                className="px-8 py-4 border-2 border-white text-white rounded-full font-semibold hover:bg-white hover:text-[#7A6F5C] transition-all duration-300"
               >
-                <span className="relative z-10">Explore Collections</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
-              </button>
-
-              <button className="px-8 py-4 border-2 border-white text-white rounded-full font-semibold hover:bg-white hover:text-blue-900 transition-all duration-300">
                 Book Consultation
-              </button>
+              </a>
             </motion.div>
           </motion.div>
 
@@ -255,24 +250,35 @@ const InfoCard: React.FC<{
 );
 
 const GoogleMapsSection: React.FC = () => (
-  <section className="py-16 px-4 bg-gray-100">
-    <div className="max-w-6xl mx-auto">
-      <h2 className="text-3xl md:text-5xl font-bold text-center text-blue-600 mb-12">
-        Find Us
-      </h2>
+  <section className="py-12 px-4 bg-gray-100">
+    <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+      {/* Left Section: Location Info and Button */}
+      <div className="flex flex-col justify-center text-center md:text-left">
+        <h2 className="text-2xl md:text-3xl font-bold  mb-4">
+          Visit Our Location
+        </h2>
+        <p className="text-gray-700 mb-6">
+          Eyespace Optics, Main Street, Bangalore, India. <br />
+          Open Monday to Saturday, 10:00 AM to 8:00 PM.
+        </p>
+        <button
+          className="px-4 py-2 md:px-6 md:py-3 bg-[#7A6F5C] text-white font-semibold rounded-md shadow-md transition-all"
+          onClick={() => alert("Redirecting to booking page!")}
+        >
+          Book Appointment
+        </button>
+      </div>
+
+      {/* Right Section: Google Maps */}
       <div
         className="relative overflow-hidden rounded-lg shadow-lg"
-        style={{ paddingBottom: "56.25%" }}
+        style={{ paddingBottom: "56.25%" }} // 16:9 Aspect Ratio
       >
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15548.237512891923!2d77.61719889560167!3d13.031890747124429!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17763faa837f%3A0xad5315f3d739992d!2sEyespace%20optics!5e0!3m2!1sen!2sin!4v1733927011052!5m2!1sen!2sin"
-          width="100%"
-          height="100%"
+          className="absolute top-0 left-0 w-full h-full"
           style={{
             border: 0,
-            position: "absolute",
-            top: 0,
-            left: 0,
           }}
           allowFullScreen
           loading="lazy"
@@ -286,7 +292,7 @@ const GoogleMapsSection: React.FC = () => (
 const ImageShowcaseSection: React.FC = () => (
   <section className="py-24 px-4 bg-white">
     <div className="max-w-6xl mx-auto">
-      <h2 className="text-3xl md:text-5xl font-bold text-center text-blue-600 mb-16">
+      <h2 className="text-3xl md:text-5xl font-bold text-center  mb-16">
         Our Store
       </h2>
 
@@ -401,7 +407,7 @@ const CallToActionSection: React.FC = () => (
         href="https://maps.google.com?q=184%2FC%2C+Hennur+Main+Rd%2C+next+to+Reliance+Fresh+Mall%2C+HBR+Layout+4th+Block%2C+Hennur+Gardens%2C+Bengaluru%2C+Karnataka+560043"
         target="_blank"
         rel="noopener noreferrer"
-        className="bg-white text-blue-600 text-lg font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-gray-100"
+        className="bg-white text-[#7A6F5C] text-lg font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-gray-100"
       >
         Get Directions
       </a>

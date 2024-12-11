@@ -54,7 +54,7 @@ export default function Navbar() {
               to="/"
               className="flex items-center text-2xl font-bold text-[#7A6F5C] hover:text-[#5C5043] transition-colors"
             >
-              <span>Eyespace Optics</span>
+              <span>EYESPACE OPTICS</span>
             </Link>
           </div>
 
